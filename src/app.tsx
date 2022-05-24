@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 
 import ErrorBoundary from "./components/error-boundary";
 import AppRoutes from "./app.routes";
@@ -26,9 +26,15 @@ function App() {
               <h1><img src="" title="Dzmitry Hrachou" alt="dzgrachyov"/></h1>
               <h2>Dzmitry Hrachou</h2>
               <ul className="pr__list pr__list__menu">
-                <li className="pr__list__item pr__list__menu__item">About</li>
-                <li className="pr__list__item pr__list__menu__item">Former Experience</li>
-                <li className="pr__list__item pr__list__menu__item">Contacts</li>
+                <li className="pr__list__item pr__list__menu__item">
+                  <Link to={"/about"} >About</Link>
+                </li>
+                <li className="pr__list__item pr__list__menu__item">
+                  <Link to={"/former-experience"} >Former Experience</Link>
+                </li>
+                <li className="pr__list__item pr__list__menu__item">
+                  <Link to={"/contacts"} >Contacts</Link>
+                </li>
               </ul>
             </nav>
           </header>

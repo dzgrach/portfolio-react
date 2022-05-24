@@ -1,6 +1,6 @@
 import React from "react";
 
-const Landing = () => (
+const About = () => (
   <>
     <section className="pr__main__content">
 1
@@ -12,4 +12,4 @@ const Landing = () => (
   </>
 );
 
-export default Landing;
+export default About;
