@@ -1,10 +1,13 @@
 import React from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { BrowserRouter as Router, Link, Route, Routes } from "react-router-dom";
 
 import ErrorBoundary from "./components/error-boundary";
 import AppRoutes from "./app.routes";
 
 import "./app.scss";
+import About from "./pages/about";
+import FormerExperience from "./pages/former-experience";
+import Contacts from "./pages/contacts";
 
 function App() {
   return (
@@ -23,8 +26,14 @@ function App() {
               </ul>
             </div>
             <nav>
-              <h1><img src="" title="Dzmitry Hrachou" alt="dzgrachyov"/></h1>
-              <h2>Dzmitry Hrachou</h2>
+              <h1><img src=""/></h1>
+              <h2>
+                <Routes>
+                  <Route path="/about" element={<h2>About</h2>}/>
+                  <Route path="/former-experience" element={<h2>Former Experience</h2>}/>
+                  <Route path="/contacts" element={<h2>Contacts</h2>}/>
+                </Routes>
+              </h2>
               <ul className="pr__list pr__list__menu">
                 <li className="pr__list__item pr__list__menu__item">
                   <Link to={"/about"} >About</Link>
