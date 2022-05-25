@@ -1,27 +1,32 @@
 import React from "react";
 import { Link, Route, Routes } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
-const Navigation = () => (
-  <nav>
-    <h1><img src=""/></h1>
-    <Routes>
-      <Route path="/about" element={<h2>About</h2>}/>
-      <Route path="/former-experience" element={<h2>Former Experience</h2>}/>
-      <Route path="/contacts" element={<h2>Contacts</h2>}/>
-    </Routes>
-    <ul className="pr__list pr__list__menu">
-      <li className="pr__list__item pr__list__menu__item">
-        <Link to={"/about"}>About</Link>
-      </li>
-      <li className="pr__list__item pr__list__menu__item">
-        <Link to={"/former-experience"}>Former Experience</Link>
-      </li>
-      <li className="pr__list__item pr__list__menu__item">
-        <Link to={"/contacts"}>Contacts</Link>
-      </li>
-    </ul>
-  </nav>
-);
+const Navigation = () => {
+  const { t } = useTranslation();
+
+  return (
+    <nav>
+      <h1><img src=""/></h1>
+      <Routes>
+        <Route path="/about" element={<h2>{t("nav-menu.about")}</h2>}/>
+        <Route path="/former-experience" element={<h2>{t("nav-menu.former-experience")}</h2>}/>
+        <Route path="/contacts" element={<h2>{t("nav-menu.contacts")}</h2>}/>
+      </Routes>
+      <ul className="pr__list pr__list__menu">
+        <li className="pr__list__item pr__list__menu__item">
+          <Link to={"/about"}>{t("nav-menu.about")}</Link>
+        </li>
+        <li className="pr__list__item pr__list__menu__item">
+          <Link to={"/former-experience"}>{t("nav-menu.former-experience")}</Link>
+        </li>
+        <li className="pr__list__item pr__list__menu__item">
+          <Link to={"/contacts"}>{t("nav-menu.contacts")}</Link>
+        </li>
+      </ul>
+    </nav>
+  )
+};
 
 const PersonalContacts = () => (
   <div className="pr__main__contacts">
