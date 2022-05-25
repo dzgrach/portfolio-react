@@ -4,22 +4,20 @@ import { Link, Route, Routes } from "react-router-dom";
 const Navigation = () => (
   <nav>
     <h1><img src=""/></h1>
-    <h2>
-      <Routes>
-        <Route path="/about" element={<h2>About</h2>}/>
-        <Route path="/former-experience" element={<h2>Former Experience</h2>}/>
-        <Route path="/contacts" element={<h2>Contacts</h2>}/>
-      </Routes>
-    </h2>
+    <Routes>
+      <Route path="/about" element={<h2>About</h2>}/>
+      <Route path="/former-experience" element={<h2>Former Experience</h2>}/>
+      <Route path="/contacts" element={<h2>Contacts</h2>}/>
+    </Routes>
     <ul className="pr__list pr__list__menu">
       <li className="pr__list__item pr__list__menu__item">
-        <Link to={"/about"} >About</Link>
+        <Link to={"/about"}>About</Link>
       </li>
       <li className="pr__list__item pr__list__menu__item">
-        <Link to={"/former-experience"} >Former Experience</Link>
+        <Link to={"/former-experience"}>Former Experience</Link>
       </li>
       <li className="pr__list__item pr__list__menu__item">
-        <Link to={"/contacts"} >Contacts</Link>
+        <Link to={"/contacts"}>Contacts</Link>
       </li>
     </ul>
   </nav>

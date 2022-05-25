@@ -31,9 +31,9 @@ class ErrorBoundary extends React.Component<IErrorBoundaryProps, IErrorBoundaryS
           </details>
         ) : undefined;
       return (
-        <section className="pr-main">
+        <section className="pr__main__content">
           <header>
-            <h2>An unexpected error has occurred.</h2>
+            <h3>An unexpected error has occurred.</h3>
           </header>
 
           <section>
