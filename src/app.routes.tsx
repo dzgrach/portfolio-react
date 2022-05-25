@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import About from "./pages/about";
 import Contacts from "./pages/contacts";
@@ -11,6 +11,8 @@ const AppRoutes = () => (
     <Route path="/about" element={<EncloseErrorBoundary element={About}/>}/>
     <Route path="/former-experience" element={<EncloseErrorBoundary element={FormerExperience}/>}/>
     <Route path="/contacts" element={<EncloseErrorBoundary element={Contacts}/>}/>
+
+    <Route path="/" element={<Navigate replace to="/about" />} />
   </Routes>
 );
 
