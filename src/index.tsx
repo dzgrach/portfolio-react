@@ -1,19 +1,28 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import './i18n';
 
-import "./index.css";
+import CssBaseline from "@mui/material/CssBaseline"
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+
+import "./i18n";
+
+import "./index.scss";
+
+import reportWebVitals from "./reportWebVitals";
 
 import App from "./app";
-import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
+const theme = createTheme();
 
 root.render(
   <React.StrictMode>
-    <App/>
+    <ThemeProvider theme={theme}>
+      <CssBaseline/>
+      <App/>
+    </ThemeProvider>
   </React.StrictMode>
 );
 

@@ -1,37 +1,53 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
-const About = () => (
-  <>
-    <section className="pr__main__content">
-      <h3>Summary</h3>
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
+import Divider from '@mui/material/Divider';
+import useMarkdown from "../hooks/useMarkdown";
 
-      <ul className="pr__list">
-        <li>
-          Strong analytical skills, good communication skills, functional, non-functional and regression testing
-          skills, development and code review skills
-        </li>
-        <li>Abilities to organize and plan the day, to work effectively in a team, to train people, trainability and
-          responsibility
-        </li>
-        <li>Clear understanding of architectures of web-applications</li>
-        <li>Strong administration of Linux OS</li>
-        <li>Practical experience in integration different types of 3rd party apps and etc (like Avest Java
-          Cryptography Extension Provider ), experience with customer communication
-        </li>
-        <li>Version control system: GIT, TFS</li>
-        <li>Defect management: JIRA, Abacus, TFS, Bugzilla</li>
-        <li>Experience as QA Engineer</li>
-        <li>Experience as Frontend Engineer (React, Angular)</li>
-        <li>Team City, Azure, AWS Dev Ops experience</li>
-        <li>C# experience (SpireDOC, Selenium, Entity Framework</li>
-        <li>Java experience (Spring Framework</li>
-      </ul>
-    </section>
+import summary_en from "../assets/content/summary_en.md";
+import { render } from "react-dom";
 
-    <section className="pr__main__content">
-      <h3>Education</h3>
-    </section>
-  </>
+const SectionTitle = (props: any) => (
+  <Typography
+    component="h3"
+    variant="h5"
+    color="inherit"
+  >
+    {props.title}
+  </Typography>
 );
+
+const PageTitle = (props: any) => (
+  <Typography
+    component="h1"
+    variant="h4"
+    color="inherit"
+  >
+    {props.title}
+  </Typography>
+);
+
+const About = () => {
+  const { i18n } = useTranslation();
+  const Summary = useMarkdown(summary_en);
+
+  return (
+    <>
+      <PageTitle title={i18n.t("nav-menu.about")}/>
+
+      <Grid component="section">
+        {Summary}
+      </Grid>
+
+      <Divider/>
+
+      <Grid component="section">
+        <SectionTitle title="Education"/>
+      </Grid>
+    </>
+  );
+};
 
 export default About;
