@@ -1,14 +1,19 @@
 import React from "react";
 
+import Grid from "@mui/material/Grid";
+import Divider from "@mui/material/Divider";
+
 const FormerExperience = () => (
   <>
-    <section className="pr__main__content">
-3
-    </section>
+    <Grid component="section" container xs={10}>
+      3
+    </Grid>
 
-    <section className="pr__main__content">
-4
-    </section>
+    <Divider/>
+
+    <Grid component="section" container xs={10}>
+      4
+    </Grid>
   </>
 );
 

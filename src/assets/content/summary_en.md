@@ -10,5 +10,5 @@
 * Experience as QA Engineer
 * Experience as Frontend Engineer (React, Angular)
 * Team City, Azure, AWS Dev Ops experience
-* C# experience (SpireDOC, Selenium, Entity Framework
-* Java experience (Spring Framework
+* C# experience (SpireDOC, Selenium, Entity Framework)
+* Java experience (Spring Framework)

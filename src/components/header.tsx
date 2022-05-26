@@ -4,15 +4,15 @@ import { useTranslation } from "react-i18next";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
+import Grid from "@mui/material/Grid";
 
 const Title = (props: any) => (
   <Typography
     component="h3"
-    variant="h5"
+    variant="h6"
     color="inherit"
     align="center"
     noWrap
-    sx={{ flex: 1 }}
   >
     {props.title}
   </Typography>
@@ -32,16 +32,20 @@ const Header = (props: any) => {
   } ];
 
   return (
-    <header>
+    <Grid component="header">
       <Toolbar sx={{ borderBottom: 1, borderColor: "divider" }}>
-        <Title title="Dzmitry Hrachou"/>
+        {/*****/}
       </Toolbar>
 
       <Toolbar
         component="nav"
         variant="dense"
-        sx={{ justifyContent: "end", overflowX: "auto" }}
+        sx={{ overflowX: "auto" }}
       >
+        <Title title="Dzmitry Hrachou"/>
+
+        <div style={{marginLeft: "auto"}}/>
+
         {sections.map((section: any) => (
           <Link
             color="inherit"
@@ -55,7 +59,7 @@ const Header = (props: any) => {
           </Link>
         ))}
       </Toolbar>
-    </header>
+    </Grid>
   );
 };
 

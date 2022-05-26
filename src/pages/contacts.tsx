@@ -1,14 +1,19 @@
 import React from "react";
 
+import Grid from "@mui/material/Grid";
+import Divider from "@mui/material/Divider";
+
 const Contacts = () => (
   <>
-    <section className="pr__main__content">
-5
-    </section>
+    <Grid component="section" container xs={10}>
+      5
+    </Grid>
 
-    <section className="pr__main__content">
-6
-    </section>
+    <Divider/>
+
+    <Grid component="section" container xs={10}>
+      6
+    </Grid>
   </>
 );
 
