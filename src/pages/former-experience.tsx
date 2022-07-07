@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 
 import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
@@ -17,4 +18,7 @@ const FormerExperience = () => (
   </>
 );
 
-export default FormerExperience;
+const mapStateToProps = (state: any) => ({});
+const mapDispatchToProps = (dispatch: any, ownProps: any) => ({});
+
+export default connect(mapStateToProps,mapDispatchToProps)(FormerExperience);
