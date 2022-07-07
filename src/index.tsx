@@ -6,9 +6,9 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import "./i18n";
 
-import "./index.scss";
-
 import reportWebVitals from "./reportWebVitals";
+
+import "./index.scss";
 
 import App from "./app";
 
