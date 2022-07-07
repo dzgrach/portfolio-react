@@ -22,7 +22,6 @@ const Title = (props: any) => (
 
 const Header = (props: any) => {
   const { i18n } = useTranslation();
-  const dispatch = useDispatch();
 
   const sections: any = [{
     title: i18n.t("nav-menu.about"),
@@ -37,7 +36,7 @@ const Header = (props: any) => {
 
   const switchLocaleCallback = useCallback((lang: any) => () => {
     i18n.changeLanguage(lang);
-    dispatch(localeSwitched({locale: lang}));
+    props.languageChanged(lang);
   }, [props.locale]);
 
   return (
@@ -95,8 +94,12 @@ const Header = (props: any) => {
 };
 
 const mapStateToProps = (state: any) => ({
-  locale: state.app.locale
+  locale: state.app.locale,
 });
-const mapDispatchToProps = (dispatch: any, ownProps: any) => ({});
+const mapDispatchToProps = (dispatch: any, ownProps: any) => ({
+  languageChanged: (lang: string) => {
+    dispatch(localeSwitched({locale: lang}));
+  },
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
