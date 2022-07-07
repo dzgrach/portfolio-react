@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useCallback, useEffect } from "react";
+import { connect, useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
 
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
+import { localeSwitched } from "../reducers/app.reducer";
 
 const Title = (props: any) => (
   <Typography
@@ -20,7 +22,9 @@ const Title = (props: any) => (
 
 const Header = (props: any) => {
   const { i18n } = useTranslation();
-  const sections: any = [ {
+  const dispatch = useDispatch();
+
+  const sections: any = [{
     title: i18n.t("nav-menu.about"),
     href: "/about",
   }, {
@@ -29,7 +33,12 @@ const Header = (props: any) => {
   }, {
     title: i18n.t("nav-menu.contacts"),
     href: "/contacts",
-  } ];
+  }];
+
+  const switchLocaleCallback = useCallback((lang: any) => {
+    i18n.changeLanguage(props.locale);
+    dispatch(localeSwitched({locale: lang}));
+  }, [props.locale]);
 
   return (
     <Grid component="header">
@@ -42,9 +51,31 @@ const Header = (props: any) => {
         variant="dense"
         sx={{ overflowX: "auto" }}
       >
-        <Title title="Dzmitry Hrachou"/>
+        <Title title="Dzmitry Hrachou" />
 
-        <div style={{marginLeft: "auto"}}/>
+        <Link
+          color="inherit"
+          noWrap
+          variant="body2"
+          sx={{ p: 1, flexShrink: 0 }}
+          onClick={() => switchLocaleCallback("en")}
+          href="#"
+        >
+          English
+        </Link>
+
+        <Link
+          color="inherit"
+          noWrap
+          variant="body2"
+          sx={{ p: 1, flexShrink: 0 }}
+          onClick={() => switchLocaleCallback("ru")}
+          href="#"
+        >
+          Russian
+        </Link>
+
+        <div style={{ marginLeft: "auto" }} />
 
         {sections.map((section: any) => (
           <Link
@@ -63,4 +94,9 @@ const Header = (props: any) => {
   );
 };
 
-export default Header;
+const mapStateToProps = (state: any) => ({
+  locale: state.app.locale
+});
+const mapDispatchToProps = (dispatch: any, ownProps: any) => ({});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

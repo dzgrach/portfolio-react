@@ -1,7 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { connect } from "react-redux";
 
-import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import useMarkdown from "../hooks/useMarkdown";
@@ -47,4 +47,7 @@ const About = () => {
   );
 };
 
-export default About;
+const mapStateToProps = (state: any) => ({});
+const mapDispatchToProps = (dispatch: any, ownProps: any) => ({});
+
+export default connect(mapStateToProps,mapDispatchToProps)(About);
