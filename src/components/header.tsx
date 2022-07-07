@@ -32,6 +32,9 @@ const Header = (props: any) => {
   }, {
     title: i18n.t("nav-menu.contacts"),
     href: "/contacts",
+  }, {
+    title: i18n.t("nav-menu.world-news"),
+    href: "/world-news",
   }];
 
   const switchLocaleCallback = useCallback((lang: any) => () => {
