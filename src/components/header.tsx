@@ -35,8 +35,8 @@ const Header = (props: any) => {
     href: "/contacts",
   }];
 
-  const switchLocaleCallback = useCallback((lang: any) => {
-    i18n.changeLanguage(props.locale);
+  const switchLocaleCallback = useCallback((lang: any) => () => {
+    i18n.changeLanguage(lang);
     dispatch(localeSwitched({locale: lang}));
   }, [props.locale]);
 
@@ -58,7 +58,7 @@ const Header = (props: any) => {
           noWrap
           variant="body2"
           sx={{ p: 1, flexShrink: 0 }}
-          onClick={() => switchLocaleCallback("en")}
+          onClick={switchLocaleCallback("en")}
           href="#"
         >
           English
@@ -69,7 +69,7 @@ const Header = (props: any) => {
           noWrap
           variant="body2"
           sx={{ p: 1, flexShrink: 0 }}
-          onClick={() => switchLocaleCallback("ru")}
+          onClick={switchLocaleCallback("ru")}
           href="#"
         >
           Russian
