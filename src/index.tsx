@@ -16,10 +16,12 @@ import "./index.scss";
 import AppReducer from "./reducers/app.reducer"
 
 import App from "./app";
+import ArticlesSlice from "./reducers/articles.slice";
 
 const store = configureStore({
   reducer: {
     app: AppReducer,
+    articles: ArticlesSlice,
   },
   middleware: [thunkMiddleware]
 })

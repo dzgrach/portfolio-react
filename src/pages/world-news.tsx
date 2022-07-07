@@ -6,6 +6,9 @@ import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
 import Typography from '@mui/material/Typography';
 
+import { articlesFetched } from "../reducers/articles.slice";
+import { PropaneSharp } from "@mui/icons-material";
+
 const Article = ({ title, description }: any) => (
   <>
     <Grid component="article" container>
@@ -20,21 +23,15 @@ const Article = ({ title, description }: any) => (
   </>
 );
 
-const WorldNews = () => {
-  const [articles, setArticles] = useState([]);
-  const LatestNews = useMemo(async () =>
-    await axios.get("https://newsapi.org/v2/top-headlines", { params: { country: "us", apiKey: "2a5cf0de663c43b3a06bfe2eddc6be58" } }), []);
-
+const WorldNews = (props: any) => {
   useEffect(() => {
-    LatestNews.then(({ data }: any) => {
-      setArticles(data?.articles || []);
-    });
+    props.fetchArticles();
   }, []);
 
   return (
     <>
       <Grid component="section" container>
-        {articles.map((article: any) => (<Article key={article.title} title={article.title} description={article.description} />))}
+        {props.articles?.map((article: any) => (<Article key={article.title} title={article.title} description={article.description} />))}
       </Grid>
 
       <Divider />
@@ -46,7 +43,17 @@ const WorldNews = () => {
   );
 };
 
-const mapStateToProps = (state: any) => ({});
-const mapDispatchToProps = (dispatch: any, ownProps: any) => ({});
+const mapStateToProps = (state: any) => ({
+  articles: state.articles
+});
+const mapDispatchToProps = (dispatch: any, ownProps: any) => ({
+  fetchArticles: () => {
+    axios
+    .get("https://newsapi.org/v2/top-headlines", { params: { country: "us", apiKey: "2a5cf0de663c43b3a06bfe2eddc6be58" } })
+    .then(({data: {articles}}: any) => {
+      dispatch(articlesFetched({articles}));
+    });
+  }
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(WorldNews);
