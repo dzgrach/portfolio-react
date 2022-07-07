@@ -25,7 +25,7 @@ const Article = ({ title, description }: any) => (
 
 const WorldNews = (props: any) => {
   useEffect(() => {
-    props.fetchArticles();
+    props.fetchArticles({country: "us"});
   }, []);
 
   return (
@@ -47,9 +47,9 @@ const mapStateToProps = (state: any) => ({
   articles: state.articles
 });
 const mapDispatchToProps = (dispatch: any, ownProps: any) => ({
-  fetchArticles: () => {
+  fetchArticles: ({country}: any) => {
     axios
-    .get("https://newsapi.org/v2/top-headlines", { params: { country: "us", apiKey: "2a5cf0de663c43b3a06bfe2eddc6be58" } })
+    .get("https://newsapi.org/v2/top-headlines", { params: { country, apiKey: "2a5cf0de663c43b3a06bfe2eddc6be58" } })
     .then(({data: {articles}}: any) => {
       dispatch(articlesFetched({articles}));
     });
